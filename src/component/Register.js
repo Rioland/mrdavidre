@@ -3,7 +3,7 @@ import "../App.css";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-const api = "http://localhost:9000";
+const api = "https://mrdavidapi.herokuapp.com/";
 function Register() {
 axios.defaults.withCredentials = true;
   const [name, setName] = useState("");

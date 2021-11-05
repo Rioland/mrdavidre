@@ -5,7 +5,7 @@ import axios from "axios";
 import {  Link, Redirect } from "react-router-dom";
 
 import Table from "./Table";
-const api = "http://localhost:9000";
+const api = "https://mrdavidapi.herokuapp.com/";
 
 function Dashboard() {
   axios.defaults.withCredentials = true;
