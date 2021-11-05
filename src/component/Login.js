@@ -1,9 +1,9 @@
 import  { useState, useEffect } from "react";
 import Dashboard from "./Dashoard";
 import "../App.css";
-import { Route ,Link, Redirect} from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
 import axios from "axios";
-const api = "https://mrdavidapi.herokuapp.com/";
+const api = "https://mrdavidapi.herokuapp.com";
 function Login() {
   axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
@@ -12,7 +12,7 @@ function Login() {
   // const [loginData, setloginData] = useState(false);
 
   const loginFunction = () => {
-    if (username != "" && password != "") {
+    if (username !== "" && password !== "") {
       axios
         .post(api + "/v1/login", {
           username: username,
@@ -20,7 +20,7 @@ function Login() {
         })
         .then((resp) => {
           let prot = resp.data;
-          if (prot.error == false) {
+          if (prot.error === false) {
           //  setloginData(prot);
            localStorage.setItem("token",prot.token)
             setloginState(true);
@@ -38,7 +38,7 @@ function Login() {
 
 
   return (
-    loginState==false?
+    loginState===false?
     <div className="container">
       <div className="row">
         <h1>Login</h1>

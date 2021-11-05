@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 
 import axios from "axios";
-const api = "https://mrdavidapi.herokuapp.com/";
+import Login from "./Login";
+const api = "https://mrdavidapi.herokuapp.com";
 function Register() {
 axios.defaults.withCredentials = true;
   const [name, setName] = useState("");
@@ -11,15 +13,16 @@ axios.defaults.withCredentials = true;
   const [phoneNumber, setphoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [comPassword, setcomPassword] = useState("");
+  const [success,setSuccess]=useState(false)
   const register = () => {
     if (
       username !== "" &&
       password !== "" &&
       phoneNumber !== "" &&
       comPassword !== "" &&
-      name != ""
+      name !== ""
     ) {
-      if (comPassword == password) {
+      if (comPassword === password) {
         axios
           .post(api+"/v1/register", {
             name: name,
@@ -30,7 +33,7 @@ axios.defaults.withCredentials = true;
           .then((res) => {
            let prot=res.data;
            if(prot.error===false){
-             alert("successfull please login")
+           setSuccess(true)
            }
           });
       } else {
@@ -41,6 +44,11 @@ axios.defaults.withCredentials = true;
 	}
   };
   return (
+    success===true?
+    <Redirect to="/login" exact render={()=>{
+      return <Login/>
+    }}  />
+    :
     <div className="container">
       <div className="row">
         <h1>Register</h1>

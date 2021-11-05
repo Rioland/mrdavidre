@@ -5,7 +5,7 @@ import axios from "axios";
 import {  Link, Redirect } from "react-router-dom";
 
 import Table from "./Table";
-const api = "https://mrdavidapi.herokuapp.com/";
+const api = "https://mrdavidapi.herokuapp.com";
 
 function Dashboard() {
   axios.defaults.withCredentials = true;
@@ -52,7 +52,7 @@ function Dashboard() {
       });
   }, []);
 
-  return loginState === false ||loginState===undefined || token === "" || token===null || token ===undefined ? (
+  return loginState === false || token === "" || token===null? (
     <Redirect to="/login" exact />
   ) : (
     <div className="d-flex p-2 bd-highlight">
