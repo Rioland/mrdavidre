@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
@@ -13,10 +13,10 @@ axios.defaults.withCredentials = true;
   const [comPassword, setcomPassword] = useState("");
   const register = () => {
     if (
-      username != "" &&
-      password != "" &&
-      phoneNumber != "" &&
-      comPassword != "" &&
+      username !== "" &&
+      password !== "" &&
+      phoneNumber !== "" &&
+      comPassword !== "" &&
       name != ""
     ) {
       if (comPassword == password) {

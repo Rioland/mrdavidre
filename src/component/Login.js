@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Dashboard from "./Dashoard";
 import "../App.css";
 import { Route ,Link, Redirect} from "react-router-dom";

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Dash.css";
 import axios from "axios";
 // import { Redirect, Route } from "react-router";
-import { Route, Link, Redirect } from "react-router-dom";
+import {  Link, Redirect } from "react-router-dom";
 
 import Table from "./Table";
 const api = "http://localhost:9000";
@@ -11,8 +11,9 @@ function Dashboard() {
   axios.defaults.withCredentials = true;
   const [loginState, setloginState] = useState();
   const [allusers, setallusers] = useState([]);
-  const [Mode, setMode] = useState("d");
+  
   const [token, setToken] = useState(localStorage.getItem("token"));
+  console.log(token);
   const [profile, setProfile] = useState("");
   useEffect(() => {
     // const token=localStorage.getItem("token");
@@ -51,7 +52,7 @@ function Dashboard() {
       });
   }, []);
 
-  return loginState == false || token == "" ? (
+  return loginState === false || token === "" ? (
     <Redirect to="/login" exact />
   ) : (
     <div className="d-flex p-2 bd-highlight">
@@ -69,9 +70,7 @@ function Dashboard() {
           <li>
             <Link to="#" className="nav-link py-3 border-bottom">
               <i
-                onClick={() => {
-                  setMode("d");
-                }}
+               
                 className="fa fa-dashboard"
               ></i>{" "}
               <small>Dashboard</small>{" "}
@@ -85,9 +84,7 @@ function Dashboard() {
             </Link>{" "}
           </li>
           <li
-            onClick={() => {
-              setMode("p");
-            }}
+           
           >
             {" "}
             <Link to="#" className="nav-link py-3 border-bottom">
