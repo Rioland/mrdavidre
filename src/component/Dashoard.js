@@ -52,7 +52,7 @@ function Dashboard() {
       });
   }, []);
 
-  return loginState === false || token === "" ? (
+  return loginState === false ||loginState===undefined || token === "" || token===null || token ===undefined ? (
     <Redirect to="/login" exact />
   ) : (
     <div className="d-flex p-2 bd-highlight">
